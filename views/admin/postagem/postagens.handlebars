@@ -1,0 +1,62 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Título</th>
+      <th scope="col">slug</th>
+      <th scope="col">descricao</th>
+      <th scope="col">conteudo</th>
+      <th scope="col">slug</th>
+      <th scope="col">Data</th>
+      <th scope="col" style="width: 140px;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each postagens}}
+    <tr>
+      <th scope="row">#</th>
+      <td>{{titulo}}</td>
+      <td>{{slug}}</td>
+      <td>{{descricao}}</td>
+      <td>{{conteudo}}</td>
+      <td>{{categoria.nome}}</td>
+      <td>{{date}}</td>
+      <td>
+        <a href="/admin/postagens/editar/{{_id}}"><button type="button" class="btn btn-outline-warning btn-sm">Editar</button></a>
+        <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modalExcluir{{_id}}">Excluir</button>
+      </td>
+    </tr>
+
+<!--Modal excluir-->
+<div class="modal fade" id="modalExcluir{{_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Atenção</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Você está prestes a excluir a postagem {{Título}}, você tem certeza que deseja fazer isso?
+      </div>
+      <div class="modal-footer">
+        <form action="/admin/postagens/excluir" method="POST">
+          <input type="hidden" name="id" value="{{_id}}">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-danger">Sim, excluir</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Fim Modal Excluir-->
+    {{else}}
+    Nenhuma postagem registrada!
+    {{/each}}
+  </tbody>
+</table>
+
+<a href="/admin/postagens/add">
+<button type="button" class="btn btn-success">Adicionar postagem</button>
+</a>
