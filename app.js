@@ -90,7 +90,7 @@ app.use('/admin', admin)//inclui as toras do arquivo "./routes/admin.js"
 app.use('/user', user)//inclui as toras do arquivo "./routes/user.js"
 
 //Outros
-const PORT = 3000
-app.listen(PORT,()=>{
-  console.log("Servidor rodando")
+const port = process.env.PORT || 3000
+app.listen(port,()=>{
+    console.log('Servidor rodando na porta %s', port)
 })
