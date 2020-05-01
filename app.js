@@ -46,7 +46,8 @@ require("./config/auth")(passport)
     app.set('view engine', 'handlebars');
     //Mongoose
     mongoose.Promise = global.Promise;
-    mongoose.connect("mongodb://localhost/blogapp").then(()=>{
+//    mongoose.connect("mongodb://localhost/blogapp").then(()=>{
+    mongoose.connect("mongodb://gymclub28:9a1b645c@mongo_blogapp:27017/blogapp").then(()=>{
       console.log("Conectado com sucesso")
     }).catch((err)=>{
       console.log("Erro ao se conectar: "+err)
